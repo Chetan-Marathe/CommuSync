@@ -1,13 +1,15 @@
 package com.websocket.commusync.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
-public class ChatMessage {
+@AllArgsConstructor
+@Getter
+@Setter
+public class ChatMessage{
     private Long id;
     private String sender;
     private String content;
+
 }
