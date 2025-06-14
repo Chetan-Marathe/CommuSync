@@ -36,7 +36,7 @@
         document.getElementById('sendMessage').disabled = !connected;
     }
     function connect() {
-        var socket = new SockJS('/chat');
+        var socket = new SockJS('http://localhost:8080/chat');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             setConnected(true);
@@ -62,12 +62,7 @@
                 sender: sender,
                 content: content
             }
-            stompClient.send(
-  "/app/sendMessage",
-  { "content-type": "application/json" },  // <-- Add this
-  JSON.stringify(chatMessage)
-);
-
+            stompClient.send("/app/sendMessage", {}, JSON.stringify(chatMessage));
             document.getElementById('messageInput').value = '';
         }
     document.getElementById('sendMessage').onclick = sendMessage;

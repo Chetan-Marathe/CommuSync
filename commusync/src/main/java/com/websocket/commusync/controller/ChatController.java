@@ -12,12 +12,13 @@ public class ChatController {
     @MessageMapping("/sendMessage")
     @SendTo("/topic/messages")
     public ChatMessage sendMessage(ChatMessage message){
-        System.out.println("received message"+message);
+
         return message;
     }
 
-    @GetMapping("chat")
+    @GetMapping("/chat")
     public String chat() {
+
         return "chat";
     }
 }

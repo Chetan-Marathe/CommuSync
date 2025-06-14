@@ -11,7 +11,6 @@ import java.util.List;
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/chat")
@@ -23,13 +22,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker("/topic");
         registry.setApplicationDestinationPrefixes("/app");
-    }
-
-
-    @Override
-    public boolean configureMessageConverters(List<MessageConverter> messageConverters) {
-        messageConverters.add(new MappingJackson2MessageConverter());
-        return false; // return false to allow default converters as fallback
     }
 }
 
